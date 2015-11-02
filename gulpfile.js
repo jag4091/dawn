@@ -18,6 +18,7 @@ var
     browserSync = require("browser-sync").create(),
 
     minifycss = require('gulp-minify-css'),
+    notify = require("gulp-notify"),
 
     reload = browserSync.reload,
 
@@ -59,7 +60,22 @@ gulp.task('default', ['jshint', 'build-js', 'build-plugins', 'build-vendor', 'bu
 gulp.task('jshint', function() {
     return gulp.src(input.jsComponents)
         .pipe(jshint())
-        .pipe(jshint.reporter('jshint-stylish'));
+        // Use gulp-notify as jshint reporter
+        .pipe(notify(function (file) {
+          if (file.jshint.success) {
+            // Don't show something if success
+            return false;
+          }
+
+          var errors = file.jshint.results.map(function (data) {
+            if (data.error) {
+              return "(" + data.error.line + ':' + data.error.character + ') ' + data.error.reason;
+            }
+          }).join("\n");
+          return file.relative + " (" + file.jshint.results.length + " errors)\n" + errors;
+        }))
+        .pipe(jshint.reporter('jshint-stylish'))
+        .pipe(jshint.reporter('fail'));
 });
 
 
@@ -102,7 +118,9 @@ gulp.task('build-vendor', function() {
 gulp.task('build-bundle', function() {
     gulp.src('src/resources/scss/styles.scss')
         .pipe(sourcemaps.init())
-        .pipe(sass().on('error', sass.logError))
+        .pipe(sass().on('error', notify.onError(function(error) {
+            return error.message;
+        }))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(output.stylesheets))
          .pipe(reload({stream: true}));
