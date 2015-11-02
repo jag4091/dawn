@@ -120,7 +120,7 @@ gulp.task('build-bundle', function() {
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', notify.onError(function(error) {
             return error.message;
-        }))
+        })))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(output.stylesheets))
          .pipe(reload({stream: true}));
