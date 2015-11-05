@@ -20,6 +20,9 @@ var
     minifycss = require('gulp-minify-css'),
     notify = require("gulp-notify"),
 
+    autoprefixer = require('gulp-autoprefixer'),
+    browsersToPrefix = ['> 5%'],
+
     reload = browserSync.reload,
 
 
@@ -121,6 +124,7 @@ gulp.task('build-bundle', function() {
         .pipe(sass().on('error', notify.onError(function(error) {
             return error.message;
         })))
+        .pipe(autoprefixer(browsersToPrefix))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(output.stylesheets))
          .pipe(reload({stream: true}));
