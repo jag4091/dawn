@@ -37,6 +37,7 @@ var
         'jsPlugins': 'src/resources/js/plugins/*.js',
         'jsVendor' : 'src/resources/js/vendor/*.js',
         'images': 'src/resources/images/**',
+        'includes': 'src/components/**/*.php',
         'legacyJsComponents': ['src/resources/js/plugins/respond.min.js', 'src/resources/js/plugins/html5shiv.min.js', 'src/resources/js/plugins/selectivizr-min.js',  'src/resources/js/plugins/modernizr.js']
     },
 
@@ -44,6 +45,7 @@ var
         'stylesheets': 'dist/css',
         'javascript': 'dist/js',
         'images': 'dist/img/',
+        'includes': 'dist/includes/',
         'jsPlugins': 'dist/js/plugins',
         'jsVendor': 'dist/js/vendor',
     };
@@ -53,7 +55,7 @@ var
     #GULP TASK THAT RUNS AT THE OUTSET
 \*------------------------------------*/
 
-gulp.task('default', ['jshint', 'build-js', 'build-plugins', 'build-vendor', 'build-bundle', 'serve']);
+gulp.task('default', ['jshint', 'build-js', 'build-plugins', 'build-vendor', 'build-bundle', 'build-includes', 'serve']);
 
 
 /*------------------------------------*\
@@ -132,6 +134,17 @@ gulp.task('build-bundle', function() {
 
 
 
+
+/*------------------------------------*\
+    #MOVE PHP INCLUDES
+\*------------------------------------*/
+gulp.task('build-includes', function() {
+  return gulp.src(input.includes)
+    .pipe(gulp.dest(output.includes))
+})
+
+
+
 /*------------------------------------*\
     #MINIFY IMAGES
 \*------------------------------------*/
@@ -156,18 +169,17 @@ gulp.task('images', function() {
 \*------------------------------------*/
 
 gulp.task('js-watch', ['jshint', 'build-js'], browserSync.reload);
-gulp.task('serve', ['build-bundle', 'jshint', 'build-js', 'build-plugins'], function() {
+gulp.task('serve', ['build-bundle', 'jshint', 'build-js', 'build-plugins', 'build-includes'], function() {
 
     browserSync.init({
-        proxy: "localhost:8888/boilerplate/"
+        proxy: "localhost:8888/bbi-razor/"
     });
 
     gulp.watch([input.scss, 'src/components/**/*.scss'], ['build-bundle']);
 
     gulp.watch([input.jsComponents], ['js-watch']);
     gulp.watch([input.jsPlugins], ['jshint', 'build-plugins']);
-    // gulp.watch([output.jsPlugins, output.javascript], browserSync.reload);
     gulp.watch([input.images], ['images']);
-    gulp.watch("src/templates/*.php").on('change', browserSync.reload);
+    gulp.watch([input.includes], ['build-includes']);
     gulp.watch("src/components/**/*.php").on('change', browserSync.reload);
 });
