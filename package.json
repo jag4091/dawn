@@ -9,24 +9,24 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "browser-sync": "^2.8.0",
-    "gulp": "^3.9.0",
-    "gulp-autoprefixer": "^2.3.1",
-    "gulp-concat": "^2.6.0",
-    "gulp-imagemin": "^2.3.0",
-    "gulp-jshint": "^1.11.2",
-    "gulp-livereload": "^3.8.0",
-    "gulp-minify-css": "^1.2.0",
-    "gulp-newer": "^0.5.1",
-    "gulp-notify": "^2.2.0",
-    "gulp-sass": "^2.0.4",
-    "gulp-sourcemaps": "^1.5.2",
-    "gulp-util": "^3.0.6",
-    "gulp-wrap-js": "^0.4.1",
-    "jshint-stylish": "^2.0.1",
-    "lodash": "^3.10.1"
+    "browser-sync": "*",
+    "gulp": "*",
+    "gulp-autoprefixer": "*",
+    "gulp-concat": "*",
+    "gulp-imagemin": "*",
+    "gulp-jshint": "*",
+    "gulp-livereload": "*",
+    "gulp-minify-css": "*",
+    "gulp-newer": "*",
+    "gulp-notify": "*",
+    "gulp-sass": "*",
+    "gulp-sourcemaps": "*",
+    "gulp-util": "*",
+    "gulp-wrap-js": "*",
+    "jshint-stylish": "*",
+    "lodash": "*"
   },
   "dependencies": {
-    "imagemin-pngquant": "^4.1.2"
+    "imagemin-pngquant": "*"
   }
 }
