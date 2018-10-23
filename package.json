@@ -14,7 +14,7 @@
     "gulp-autoprefixer": "*",
     "gulp-concat": "*",
     "gulp-imagemin": "*",
-    "gulp-jshint": "*",
+    "gulp-jshint": "^2.1.0",
     "gulp-livereload": "*",
     "gulp-minify-css": "*",
     "gulp-newer": "*",
@@ -23,6 +23,7 @@
     "gulp-sourcemaps": "*",
     "gulp-util": "*",
     "gulp-wrap-js": "*",
+    "jshint": "^2.9.6",
     "jshint-stylish": "*",
     "lodash": "*"
   },

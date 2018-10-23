@@ -172,7 +172,7 @@ gulp.task('js-watch', ['jshint', 'build-js'], browserSync.reload);
 gulp.task('serve', ['build-bundle', 'jshint', 'build-js', 'build-plugins', 'build-includes'], function() {
 
     browserSync.init({
-        proxy: "localhost:8888/dawn/"
+        proxy: "dev.dawn" // make this what you have declared in your hosts
     });
 
     gulp.watch([input.scss, 'src/components/**/*.scss'], ['build-bundle']);
