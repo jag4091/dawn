@@ -1,0 +1,132 @@
+
+button {
+	background: white;
+	border: 1px solid transparent;
+	border-radius: 3px;
+	box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.2);
+	box-sizing: border-box;
+	color: white;
+	font-size: 16px;
+	margin: 0 0 $rhythm 0;
+	padding: 8px 22px;
+	width: 100%;
+
+	transition: background-color 300ms;
+
+	&:active {
+		box-shadow: none;
+	}
+
+	&:focus {
+		outline: none;
+	}
+
+	&:disabled {
+		cursor: not-allowed;
+		opacity: 0.75;
+	}
+
+	@include mq(tablet) {
+		margin: 0;
+		width: auto;
+
+	}
+
+	@include mq(desktop) {
+
+		&:hover {
+			cursor: pointer;
+		}
+
+	}
+
+}
+
+.primary {
+	background: $hot-orange;
+
+	@include mq(desktop) {
+
+		&:hover {
+			background-color: #B43C0C;
+
+			&:disabled { background-color: $hot-orange; }
+		}
+
+	}
+}
+
+.secondary {
+	background: $primary-purple;
+
+	@include mq(desktop) {
+
+		&:hover {
+			background-color: #561E5F;
+
+			&:disabled { background-color: $primary-purple; }
+		}
+
+	}
+}
+
+.tertiary {
+	border-color: $primary-purple;
+	color: $primary-purple;
+
+	@include mq(desktop) {
+
+		&:hover {
+			background-color: $mist-grey;
+
+			&:disabled { background-color: white; }
+		}
+
+	}
+}
+
+.quarternary {
+	box-shadow: none;
+	color: $primary-purple;
+	text-decoration: underline;
+
+	&:active {
+		text-decoration: underline;
+	}
+
+	@include mq(desktop) {
+
+		&:hover {
+			text-decoration: none;
+
+			&:disabled { 
+				text-decoration: underline;
+			}
+
+		}
+	}
+
+}
+
+.quinary {
+	box-shadow: none;
+	color: $charcoal-grey;
+	padding-left: 0;
+	padding-right: 0;
+
+	&:active {
+		text-decoration: none;
+	}
+
+	@include mq(desktop) {
+
+		&:hover {
+			text-decoration: underline;
+
+			&:disabled { text-decoration: none; }
+		}
+
+	}
+}
+
+

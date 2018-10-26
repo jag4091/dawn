@@ -1,5 +1,22 @@
 
+html {
+
+	&.no-scroll {
+		height: 100%;
+		overflow: hidden;
+	}
+
+}
+
 body {
-	background: $lightgrey;
-	color: $black;
+	background-color: $white;
+	color: $charcoal-grey;
+	font-family: $font-body;
+	margin: 0;
+	padding: 0 25%;
+
+	&.no-scroll {
+		height: 100%;
+		overflow: hidden;
+	}
 }

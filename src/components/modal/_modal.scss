@@ -1,0 +1,188 @@
+
+.sc-modal__container {
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 100%;
+	width: 100%;
+
+	transition: top 0ms 400ms;
+
+	@include mq(tablet) {
+		transition: top 0ms 300ms;
+
+		&.open {
+			transition: top 0ms 300ms;
+		}
+
+	}
+
+	&.open {
+		top: 0%;
+		
+		transition: top 0ms 0ms;
+	}
+}
+
+.sc-modal__overlay {
+	background: rgba(0, 0, 0, 0.9);
+	height: 100%;
+	left: 0;
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 0;
+
+	transition: opacity 300ms 100ms;
+
+	@include mq(tablet) {
+		transition: opacity 300ms 0ms;
+	}
+}
+
+.open .sc-modal__overlay {
+	opacity: 1;
+
+	transition: opacity 300ms 100ms;
+
+	@include mq(tablet) {
+		transition: opacity 300ms 0ms;
+	}
+}
+
+.sc-modal {
+	background-color: $white;
+	bottom: -100%;
+	box-sizing: border-box;
+	height: calc(100% - 64px);
+	left: 0;
+	position: absolute;
+	width: 100%;
+	z-index: 1;
+
+	transition: bottom 300ms;
+
+	@include mq(tablet) {
+		bottom: -100%;
+		left: 50%;
+		margin-left: -300px;
+		max-height: 80%;
+		max-width: 600px;
+		opacity: 0;
+
+		transition: bottom 0ms, opacity 300ms;
+	}
+}
+
+.open .sc-modal {
+	bottom: 0%;
+
+	transition: bottom 300ms;
+
+	@include mq(tablet) {
+		bottom: 10%;
+		opacity: 1;
+
+		transition: bottom 0ms, opacity 100ms;
+	}
+}
+
+.sc-modal__inner {
+	box-sizing: border-box;
+	height: 100%;
+	overflow: scroll;
+	padding: $rhythm;
+	position: absolute;
+	width: 100%;
+}
+
+a.sc-modal__close {
+	background-color: $white;
+	border: none;
+	cursor: pointer;
+	height: $rhythm * 2;
+	position: absolute;
+	right: 0;
+	text-indent: -999999px;
+	top: -$rhythm * 2;
+	width: $rhythm * 2;
+	z-index: 1;
+
+	&:before, &:after {
+		background-color: $mid-grey;
+		content: '';
+		height: 22px;
+		left: $rhythm - 1;
+		position: absolute;
+		top: 5px;
+		transform: rotate(45deg);
+		width: 2px;
+	}
+
+	&:after {
+		left: auto;
+		right: $rhythm - 1;
+		transform: rotate(-45deg);
+	}
+
+	@include mq(tablet) {
+		float: right;
+		position: relative;
+		right: 0;
+		top: 0;
+	}
+}
+
+.sc-modal__close--desktop {
+	display: none;
+
+	@include mq(tablet) {
+		display: inline-block;
+	}
+}
+
+.sc-modal__close--mobile {
+	display: inline-block;
+
+	@include mq(tablet) {
+		display: none;
+	}
+}
+
+.sc-modal__header {
+	color: $primary-purple;
+	font: {
+		size: $rhythm * 2;
+		weight: normal;
+	}
+	margin: 0 0 ($rhythm * 2) 0;
+}
+
+.sc-modal__content {
+	margin: 0 auto;
+	max-width: 400px;
+
+	@include mq(tablet) {
+		max-width: 600px;
+	}
+
+	p {
+		font-size: $rhythm;
+		margin: 0 0 ($rhythm * 2) 0;
+		line-height: 22px;
+	}
+
+}
+
+.sc-modal__cta {
+
+	@include mq(tablet) {
+
+		button:first-child {
+			float: right;
+		}
+
+	}
+
+}
