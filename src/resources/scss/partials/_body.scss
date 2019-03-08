@@ -1,9 +1,11 @@
 
-html {
 
-	&.no-scroll {
-		height: 100%;
-		overflow: hidden;
+html.no-scroll, body.no-scroll {
+	//height: 100%;
+	overflow: hidden;
+
+	@include mq(desktop) {
+		height: auto;
 	}
 
 }
@@ -13,10 +15,6 @@ body {
 	color: $charcoal-grey;
 	font-family: $font-body;
 	margin: 0;
-	padding: 0 25%;
-
-	&.no-scroll {
-		height: 100%;
-		overflow: hidden;
-	}
+	padding: 0 $rhythm;
+	overflow-x: hidden;
 }

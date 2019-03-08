@@ -1,23 +1,24 @@
 
 .sc-modal__container {
 	height: 100%;
-	left: 0;
-	position: absolute;
+	left: 100%;
+	position: fixed;
 	top: 100%;
 	width: 100%;
 
-	transition: top 0ms 400ms;
+	transition: left 0ms 400ms, top 0ms 400ms;
 
 	@include mq(tablet) {
-		transition: top 0ms 300ms;
+		transition: left 0ms 300ms, top 0ms 300ms;
 
 		&.open {
-			transition: top 0ms 300ms;
+			transition: left 0ms 300ms, top 0ms 300ms;
 		}
 
 	}
 
 	&.open {
+		left: 0%;
 		top: 0%;
 	
 		transition: top 0ms 0ms;
@@ -75,6 +76,10 @@
 	}
 }
 
+.sc-modal--fixed {
+
+}
+
 .open .sc-modal {
 	bottom: 0%;
 
@@ -95,6 +100,18 @@
 	padding: $rhythm;
 	position: absolute;
 	width: 100%;
+
+	-webkit-overflow-scrolling: touch;
+
+	.sc-modal--fixed & {
+		height: calc(100% - 210px);
+		padding-top: 0;
+		top: 70px;
+
+		@include mq(tablet) {
+			height: calc(100% - 140px);
+		}
+	}
 }
 
 a.sc-modal__close {
@@ -132,6 +149,7 @@ a.sc-modal__close {
 		right: 0;
 		top: 0;
 	}
+
 }
 
 .sc-modal__close--desktop {
@@ -157,11 +175,19 @@ a.sc-modal__close {
 		weight: normal;
 	}
 	margin: 0 0 ($rhythm * 2) 0;
+
+	.sc-modal--fixed & {
+		background: #FFF;
+		box-sizing: border-box;
+		padding: 16px;
+		position: fixed;
+		width: 600px;
+	}
 }
 
 .sc-modal__content {
 	margin: 0 auto;
-	max-width: 400px;
+	//max-width: 400px;
 
 	@include mq(tablet) {
 		max-width: 600px;
@@ -173,16 +199,41 @@ a.sc-modal__close {
 		line-height: 22px;
 	}
 
+	.sc-modal--fixed & {
+
+		max-width: 100%;
+		
+	}
+
 }
 
 .sc-modal__cta {
 
 	@include mq(tablet) {
 
+		margin-bottom: 16px;
+
 		button:first-child {
 			float: right;
 		}
 
+	}
+
+	.sc-modal--fixed & {
+		background-color: #fff;
+		bottom: 0;
+		box-sizing: border-box;
+		padding: 16px;
+		position: fixed;
+		width: 100%;
+
+		@include mq(tablet) {
+
+			bottom: 64px;
+			margin-bottom: 0px;
+			width: 600px;
+
+		}
 	}
 
 }
